@@ -17,6 +17,62 @@ except Exception as e:
 
 # --- 页面配置 ---
 st.set_page_config(page_title="AI 大学生学习助手", page_icon="🎓", layout="wide")
+# --- 🍎 注入苹果/包豪斯极简风 CSS ---
+apple_bauhaus_css = """
+<style>
+    /* 1. 整体背景与字体：苹果常用的 San Francisco 字体族与高级灰白底色 */
+    html, body, [class*="css"] {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #FAFAFA; /* 极浅的高级灰，比纯白更护眼 */
+        color: #1D1D1F; /* 苹果御用的深灰黑色 */
+    }
+    
+    /* 2. 隐藏 Streamlit 默认的臃肿元素 (右上角菜单、底部水印、顶部彩条) */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    
+    /* 3. 按钮的包豪斯化：去掉阴影，采用极简边框和微圆角 */
+    .stButton > button {
+        background-color: #FFFFFF;
+        color: #1D1D1F;
+        border: 1px solid #D2D2D7;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+        box-shadow: none;
+        transition: all 0.2s ease-in-out;
+    }
+    .stButton > button:hover {
+        background-color: #F5F5F7;
+        border-color: #86868B;
+        color: #000000;
+    }
+    
+    /* 4. 对话气泡与输入框的优雅化 */
+    [data-testid="stChatMessage"] {
+        background-color: #FFFFFF;
+        border: 1px solid #E5E5EA;
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+    [data-testid="stChatInput"] {
+        border-radius: 12px;
+        border: 1px solid #D2D2D7;
+    }
+    
+    /* 5. 分割线极简处理 */
+    hr {
+        border-top: 1px solid #E5E5EA;
+        margin: 2em 0;
+    }
+</style>
+"""
+# 强制渲染这段 CSS 代码
+st.markdown(apple_bauhaus_css, unsafe_allow_html=True)
+# -----------------------------------
 st.title("🎓 AI 大学生学习助手")
 st.caption("聚合多 AI 能力，专为大学生打造的学习神器")
 
